@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "empiarreader"
-version = "0.0.10"
+version = "0.0.11"
 description = "EMPIARReader provides utilities to lazily load data from EMPIAR into a machine-learning-friendly dataset format or to locally download the files."
 authors = ["mooniean <bcostagomes@turing.ac.uk>", "ots22 <ostrickson@turing.ac.uk>"]
 readme = "README.md"
@@ -22,7 +22,7 @@ pre-commit = "^3.3.3"
 numpy = "1.23.3"
 
 # Dependencies for 'extras'
-Sphinx = { version = "^4.5.0", optional = true }
+Sphinx = { version = "^5.0.0", optional = true }
 pydata-sphinx-theme = { version = "^0.7", optional = true }
 
 [tool.poetry.dev-dependencies]
