@@ -38,8 +38,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alan-turing-institute/empiarreader"
-"Bug Tracker" = "https://github.com/alan-turing-institute/empiarreader/issues"
+Homepage = "https://github.com/ccpem/empiarreader"
+"Bug Tracker" = "https://github.com/ccpem/empiarreader"
 
 [project.scripts]
 empiarreader = "empiarreader.cli:main"
