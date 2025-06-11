@@ -11,9 +11,6 @@ requires-python = ">=3.8"
 authors = [
     { name = "mooniean", email = "bcostagomes@turing.ac.uk" },
     { name = "ots22", email = "ostrickson@turing.ac.uk" },
-    { name = "jolaem", email = "jola.mirecka@stfc.ac.uk" },
-    { name = "marjanfamili", email = "mfamili@turing.ac.uk"},
-    { name = "crangelsmith", email = "crangelsmith@turing.ac.uk"}
 ]
 dependencies = [
     "intake>=0.6.6",
