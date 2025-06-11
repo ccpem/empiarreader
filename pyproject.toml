@@ -45,7 +45,7 @@ Homepage = "https://github.com/alan-turing-institute/empiarreader"
 empiarreader = "empiarreader.cli:main"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["empiarreader*"]
 
 [project.entry-points."intake.drivers"]
