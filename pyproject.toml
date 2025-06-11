@@ -1,49 +1,57 @@
-[tool.poetry]
-name = "empiarreader"
-version = "0.0.11"
-description = "EMPIARReader provides utilities to lazily load data from EMPIAR into a machine-learning-friendly dataset format or to locally download the files."
-authors = ["mooniean <bcostagomes@turing.ac.uk>", "ots22 <ostrickson@turing.ac.uk>"]
-readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.8"
-intake = "^0.6.6"
-bs4 = "^0.0.1"
-matplotlib = "^3.6.1"
-requests = "^2.28.1"
-scikit-image = "^0.19.3"
-xarray = "^2022.9.0"
-mrcfile = "^1.4.3"
-starfile = "^0.4.11"
-intake-xarray = "^0.6.1"
-aiohttp = "^3.8.3"
-setuptools = "^67.7.2"
-pre-commit = "^3.3.3"
-numpy = "1.23.3"
-
-# Dependencies for 'extras'
-Sphinx = { version = "^5.0.0", optional = true }
-pydata-sphinx-theme = { version = "^0.7", optional = true }
-
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
-
-[tool.poetry.extras]
-doc = ["Sphinx", "pydata-sphinx-theme"]
-
 [build-system]
-requires = ["poetry-core @ git+https://github.com/python-poetry/poetry-core.git@main"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry.plugins."intake.drivers"]
+[project]
+name = "empiarreader"
+version = "0.0.12"
+description = "EMPIARReader provides utilities to lazily load data from EMPIAR into a machine-learning-friendly dataset format or to locally download the files."
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name = "mooniean", email = "bcostagomes@turing.ac.uk" },
+    { name = "ots22", email = "ostrickson@turing.ac.uk" },
+    { name = "jolaem", email = "jola.mirecka@stfc.ac.uk" },
+    { name = "marjanfamili", email = "mfamili@turing.ac.uk"},
+    { name = "crangelsmith", email = "crangelsmith@turing.ac.uk"}
+]
+dependencies = [
+    "intake>=0.6.6",
+    "bs4>=0.0.1",
+    "matplotlib>=3.6.1",
+    "requests>=2.28.1",
+    "scikit-image>=0.19.3",
+    "xarray>=2022.9.0",
+    "mrcfile>=1.4.3",
+    "starfile>=0.4.11",
+    "intake-xarray>=0.6.1",
+    "aiohttp>=3.8.3",
+    "setuptools>=67.7.2",
+    "pre-commit>=3.3.3",
+    "numpy==1.23.3"
+]
+
+[project.optional-dependencies]
+doc = [
+    "Sphinx>=5.0.0",
+    "pydata-sphinx-theme>=0.7"
+]
+dev = [
+    "pytest>=6.2.5"
+]
+
+[project.urls]
+Homepage = "https://github.com/alan-turing-institute/empiarreader"
+"Bug Tracker" = "https://github.com/alan-turing-institute/empiarreader/issues"
+
+[project.scripts]
+empiarreader = "empiarreader.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["empiarreader*"]
+
+[project.entry-points."intake.drivers"]
 mrc = "empiarreader:MrcSource"
 star = "empiarreader:StarSource"
 empiar = "empiarreader:EmpiarCatalog"
-
-[tool.poetry.scripts]
-empiarreader = "empiarreader.cli:main"
-
-[tool.poetry.urls]
-"Homepage" = "https://github.com/alan-turing-institute/empiarreader"
-"Bug Tracker" = "https://github.com/alan-turing-institute/empiarreader/issues"
-
