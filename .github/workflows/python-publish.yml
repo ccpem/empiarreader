@@ -49,45 +49,6 @@ jobs:
     - name: publish-dist-to-pypi
       uses: pypa/gh-action-pypi-publish@release/v1
 
-  github-release:
-    name: >-
-      sign-dist-via-sigstore-and-upload-to-github-release
-    needs:
-    - publish-to-pypi
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      id-token: write
-
-    steps:
-    - name: download-dists
-      uses: actions/download-artifact@v4
-      with:
-        name: pkg-dist
-        path: dist/
-    - name: sign-dists
-      uses: sigstore/gh-action-sigstore-python@v3.0.0
-      with:
-        inputs: >-
-          ./dist/*.tar.gz
-          ./dist/*.whl
-    - name: create-github-release
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      run: >-
-        gh release create
-        '${{ github.ref_name }}'
-        --repo '${{ github.repository }}'
-        --notes ""
-    - name: upload-artifact-signature-to-github-release
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      run: >-
-        gh release upload
-        '${{ github.ref_name }}' dist/**
-        --repo '${{ github.repository }}'
-
   publish-to-test-pypi:
     name: publish-to-test-pypi
     if: startsWith(github.ref, 'refs/heads/development')
