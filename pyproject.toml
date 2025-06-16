@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "empiarreader"
-version = "0.0.15"
+version = "0.0.16"
 description = "EMPIARReader provides utilities to lazily load data from EMPIAR into a machine-learning-friendly dataset format or to locally download the files."
 readme = "README.md"
 requires-python = ">=3.8"
